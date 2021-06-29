@@ -4,10 +4,9 @@ frontend:
     preBuild:
       commands:
         - npm ci
-        - npm link @angular/cli
     build:
       commands:
-        - ng build
+        - npm run build
   artifacts:
     baseDirectory: dist
     files: "**/*"
