@@ -22,13 +22,13 @@ export class FakeAPIService implements InMemoryDbService {
       users: UsersTable.users,
 
       // data-table
-      cars: CarsTable.cars,
+      // cars: CarsTable.cars,
 
       customers: ECommerceDataContext.customers,
       // products
-      products: ECommerceDataContext.cars,
-      productRemarks: ECommerceDataContext.remarks,
-      productSpecs: ECommerceDataContext.carSpecs,
+      // products: ECommerceDataContext.cars,
+      // productRemarks: ECommerceDataContext.remarks,
+      // productSpecs: ECommerceDataContext.carSpecs,
 
     };
     return db;
