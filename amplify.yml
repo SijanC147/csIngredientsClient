@@ -1,0 +1,12 @@
+version: "1.0"
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - ng build
+  artifacts:
+    baseDirectory: dist
+    files: "**/*"
