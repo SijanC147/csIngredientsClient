@@ -9,4 +9,6 @@ frontend:
         - npm run build
   artifacts:
     baseDirectory: dist
-    files: "**/*"
+    files:
+      - "**/*"
+      - "assets/**/*"
