@@ -6,7 +6,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClipboardModule } from 'ngx-clipboard';
 import { TranslateModule } from '@ngx-translate/core';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './modules/auth/_services/auth.service';
@@ -47,7 +47,7 @@ function appInitializer(authService: AuthService) {
     // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
-    NgbModule,
+    NgbModule
   ],
   providers: [
     {

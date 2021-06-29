@@ -8,25 +8,15 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'dashboard',
+        path: 'ingrs',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-      },
-      {
-        path: 'builder',
-        loadChildren: () =>
-          import('./builder/builder.module').then((m) => m.BuilderModule),
-      },
-      {
-        path: 'ecommerce',
-        loadChildren: () =>
-          import('../modules/e-commerce/e-commerce.module').then(
-            (m) => m.ECommerceModule
+          import('../modules/ingrs/ingrs.module').then(
+            (m) => m.IngrsModule
           ),
       },
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/ingrs',
         pathMatch: 'full',
       },
       {

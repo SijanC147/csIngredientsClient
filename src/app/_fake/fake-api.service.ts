@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Observable } from 'rxjs';
 import { UsersTable } from './fake-db/users.table';
-import { CarsTable } from './fake-db/cars.table';
 // ECommerce
-import { ECommerceDataContext } from '../modules/e-commerce/_fake/fake-server/_e-commerce.data-context';
+import { IngrsDataContext } from '../modules/ingrs/_fake/fake-server/_ingrs.data-context';
 
 @Injectable({
   providedIn: 'root',
@@ -21,14 +20,8 @@ export class FakeAPIService implements InMemoryDbService {
       // auth module
       users: UsersTable.users,
 
-      // data-table
-      // cars: CarsTable.cars,
-
-      customers: ECommerceDataContext.customers,
-      // products
-      // products: ECommerceDataContext.cars,
-      // productRemarks: ECommerceDataContext.remarks,
-      // productSpecs: ECommerceDataContext.carSpecs,
+      // ingredients
+      ingredients: IngrsDataContext.ingredients,
 
     };
     return db;
