@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/ingrs',
+        redirectTo: 'ingrs',
         pathMatch: 'full',
       },
       {
