@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   appVersion: 'v717demo1',
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
