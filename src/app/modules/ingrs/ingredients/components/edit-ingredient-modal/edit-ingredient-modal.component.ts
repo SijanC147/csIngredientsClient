@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal, NgbDateAdapter, NgbDateParserFormatter, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { of, Subscription, Observable } from 'rxjs';
+import { NgbActiveModal, NgbDateAdapter, NgbDateParserFormatter, NgbTypeahead, NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { of, Subscription, Observable, fromEvent } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, finalize, first, switchMap, tap, map } from 'rxjs/operators';
-import { Ingredient } from '../../../_models/ingredient.model';
+import { Ingredient, SpoonSearchResult } from '../../../_models/ingredient.model';
 import { IngredientsService } from '../../../_services';
 import { CustomAdapter, CustomDateParserFormatter, getDateFromString } from '../../../../../_metronic/core';
 
@@ -144,10 +144,6 @@ export class EditIngredientModalComponent implements OnInit, OnDestroy {
       switchMap(term =>
         this.ingredientsService.search(term).pipe(
           tap(() => this.searchFailed = false),
-          map((ingredients) => {
-            console.log(ingredients)
-            return ingredients.map(({ name }) => name)
-          }),
           catchError(() => {
             this.searchFailed = true;
             return of([]);
@@ -155,4 +151,13 @@ export class EditIngredientModalComponent implements OnInit, OnDestroy {
       ),
       tap(() => this.searching = false)
     );
+
+  formatTypeahead = ({ name }: SpoonSearchResult): string => name
+
+  selectSpoonResult = ({ item }: NgbTypeaheadSelectItemEvent) => {
+    const selectedIngredient = this.ingredientsService.getSpoonItem(item.id).pipe(
+      map(result => result)
+    ).subscribe((res: Ingredient) => console.log(res))
+  }
+
 }

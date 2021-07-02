@@ -19,10 +19,11 @@
     <ng-container *ngIf="ingredient">
       <form action="#" class="form form-label-right" [formGroup]="formGroup">
         <div class="form-group row">
-          <label class="form-label">Enter Title</label>
+          <label class="form-label">Search for ingredients</label>
           <input id="typeahead-http" type="text" class="form-control form-control-lg form-control-solid"
-            [class.is-invalid]="searchFailed" [ngbTypeahead]="search" placeholder="Ingredient search"
-            formControlName="title" />
+            [class.is-invalid]="searchFailed" [ngbTypeahead]="search" [inputFormatter]="formatTypeahead"
+            [resultFormatter]="formatTypeahead" (selectItem)="selectSpoonResult($event)"
+            placeholder="Ingredient search" />
           <span *ngIf="searching">searching...</span>
           <div class="valid-feedback" *ngIf="isControlValid('title')">Title was entered correct</div>
           <div class="invalid-feedback" *ngIf="controlHasError('required', 'title')">Title is required</div>
@@ -30,6 +31,11 @@
             least 3 symbols</div>
           <div class="invalid-feedback" *ngIf="controlHasError('maxLength', 'title')">Title should have
             maximum 100 symbols</div>
+        </div>
+        <div class="form-group row">
+          <label class="form-label">Title</label>
+          <br />
+          <input type="text" class="form-control form-control-lg form-control-solid" formControlName="title" />
         </div>
         <div class="form-group row">
           <div class="col-lg-4">
@@ -49,7 +55,7 @@
           </div>
         </div>
         <!-- <div class="form-group row">
-           TODO FILE UPLOAD HERE
+            TODO FILE UPLOAD HERE
         </div> -->
       </form>
     </ng-container>

@@ -17,6 +17,7 @@ const DEFAULT_STATE: ITableState = {
   entityId: undefined
 };
 
+// TODO separate the spoon actions into their own service separate from DynamoDB actions
 @Injectable({
   providedIn: 'root'
 })
@@ -29,10 +30,19 @@ export class IngredientsService extends TableService<Ingredient> implements OnDe
   search(term: string): Observable<SpoonSearchResult[]> {
     const searchApiUrl = `${this.API_URL}/spoon?q=${encodeURI(term)}`
     console.log(term)
-    // const searchApiUrl = `https://csapi.seshat.app/ingredients/spoon?q=${encodeURI(term)}`
     return this.http.get<SpoonSearchResult[]>(searchApiUrl).pipe(
       map((results: SpoonSearchResult[]) => {
         return results
+      }))
+  }
+
+  getSpoonItem(spoonId: number): Observable<Ingredient> {
+    const oneSpoonItemApiUrl = `${this.API_URL}/spoon?id=${spoonId}`
+    console.log(spoonId)
+    return this.http.get<Ingredient>(oneSpoonItemApiUrl).pipe(
+      map((response: Ingredient) => {
+        console.log(response)
+        return response
       }))
   }
 
