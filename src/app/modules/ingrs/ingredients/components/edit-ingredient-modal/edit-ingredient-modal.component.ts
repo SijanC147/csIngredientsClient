@@ -14,7 +14,6 @@ const EMPTY_INGREDIENT: Ingredient = {
   calories: null,
   fat: null,
   carbohydrates: null,
-  keto: null
 };
 
 @Component({

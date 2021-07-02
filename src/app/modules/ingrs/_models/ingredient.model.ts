@@ -11,7 +11,7 @@ export interface Ingredient extends BaseModel {
   calories: Nutritient;
   fat: Nutritient;
   carbohydrates: Nutritient;
-  keto?: number;
+  // keto?: number;
 }
 
 export interface SpoonSearchResult extends BaseModel {
