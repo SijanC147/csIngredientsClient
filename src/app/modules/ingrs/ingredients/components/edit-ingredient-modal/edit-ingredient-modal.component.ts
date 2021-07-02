@@ -8,12 +8,9 @@ import { IngredientsService } from '../../../_services';
 import { CustomAdapter, CustomDateParserFormatter, getDateFromString } from '../../../../../_metronic/core';
 
 const EMPTY_INGREDIENT: Ingredient = {
-  id: undefined,
+  id: '',
   title: '',
   image: '',
-  calories: null,
-  fat: null,
-  carbohydrates: null,
 };
 
 @Component({
@@ -28,7 +25,7 @@ const EMPTY_INGREDIENT: Ingredient = {
   ]
 })
 export class EditIngredientModalComponent implements OnInit, OnDestroy {
-  @Input() id: string;
+  @Input() id: any;
   isLoading$;
   ingredient: Ingredient;
   selectedIngredient: any;

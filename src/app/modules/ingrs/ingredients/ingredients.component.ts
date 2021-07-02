@@ -153,7 +153,7 @@ export class IngredientsComponent
   }
 
   edit(id: number) {
-    const modalRef = this.modalService.open(EditIngredientModalComponent, { size: 'xl' });
+    const modalRef = this.modalService.open(EditIngredientModalComponent, { size: 'xs' });
     modalRef.componentInstance.id = id;
     modalRef.result.then(() =>
       this.ingredientService.fetch(),

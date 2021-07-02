@@ -108,9 +108,9 @@
               </label>
             </td>
             <td>{{ ingredient.title }}</td>
-            <td>{{ ingredient.calories }}</td>
-            <td>{{ ingredient.fat }}</td>
-            <td>{{ ingredient.carbohydrates }}</td>
+            <td>{{ ingredient.calories | nutrientAmount}}</td>
+            <td>{{ ingredient.fat | nutrientAmount }}</td>
+            <td>{{ ingredient.carbohydrates | nutrientAmount }}</td>
             <td>
 
               <a title="Edit ingredient" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"

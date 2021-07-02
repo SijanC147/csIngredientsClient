@@ -1,6 +1,6 @@
 
 export const environment = {
-    apiUrl: 'https://csapi.seshat.app',
+    apiUrl: 'api',
     authDomain: 'api',
     identityPoolId: 'us-east-1:2fcfd58d-a495-4733-bd12-8e39708f1a8e',
     region: 'us-east-1',

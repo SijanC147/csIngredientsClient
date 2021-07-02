@@ -14,6 +14,7 @@ import { UpdateIngredientsStatusModalComponent } from './ingredients/components/
 import { EditIngredientModalComponent } from './ingredients/components/edit-ingredient-modal/edit-ingredient-modal.component';
 import { NgbDatepickerModule, NgbModalModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from 'src/app/_metronic/core';
+import { NutrientAmountPipe } from './pipes/nutrient-amount/nutrient-amount.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CoreModule } from 'src/app/_metronic/core';
     FetchIngredientsModalComponent,
     UpdateIngredientsStatusModalComponent,
     EditIngredientModalComponent,
+    NutrientAmountPipe,
   ],
   imports: [
     CommonModule,

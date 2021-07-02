@@ -34,23 +34,23 @@
         <div class="form-group row">
           <div class="col-lg-4">
             <label class="form-label">Fat</label>
-            <span>{{ingredient.fat}}g</span>
+            <br />
+            <span>{{ingredient.fat | nutrientAmount }}</span>
           </div>
           <div class="col-lg-4">
             <label class="form-label">Carbohydrates</label>
-            <span>{{ingredient.carbohydrates}}g</span>
+            <br />
+            <span>{{ingredient.carbohydrates | nutrientAmount }}</span>
           </div>
           <div class="col-lg-4">
             <label class="form-label">Calories</label>
-            <span>{{ingredient.calories}}g</span>
+            <br />
+            <span>{{ingredient.calories | nutrientAmount }}</span>
           </div>
         </div>
-        <div class="form-group row">
-          <pre>{{formGroup | json}}</pre>
-        </div>
-        <div class="form-group row">
-          <!-- TODO FILE UPLOAD HERE -->
-        </div>
+        <!-- <div class="form-group row">
+           TODO FILE UPLOAD HERE
+        </div> -->
       </form>
     </ng-container>
   </div>
