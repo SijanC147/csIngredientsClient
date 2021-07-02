@@ -40,18 +40,18 @@
         <div class="form-group row">
           <div class="col-lg-4">
             <label class="form-label">Fat</label>
-            <br />
-            <span>{{ingredient.fat | nutrientAmount }}</span>
+            <input type="text" class="form-control form-control-lg form-control-solid" formControlName="fat"
+              [value]="formGroup.get('fat').value | nutrientAmount">
           </div>
           <div class="col-lg-4">
             <label class="form-label">Carbohydrates</label>
-            <br />
-            <span>{{ingredient.carbohydrates | nutrientAmount }}</span>
+            <input type="text" class="form-control form-control-lg form-control-solid" formControlName="carbohydrates"
+              [value]="formGroup.get('carbohydrates').value | nutrientAmount">
           </div>
           <div class="col-lg-4">
             <label class="form-label">Calories</label>
-            <br />
-            <span>{{ingredient.calories | nutrientAmount }}</span>
+            <input type="text" class="form-control form-control-lg form-control-solid" formControlName="calories"
+              [value]="formGroup.get('calories').value | nutrientAmount">
           </div>
         </div>
         <!-- <div class="form-group row">

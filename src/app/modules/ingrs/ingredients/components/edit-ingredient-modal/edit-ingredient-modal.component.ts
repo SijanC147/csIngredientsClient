@@ -67,7 +67,11 @@ export class EditIngredientModalComponent implements OnInit, OnDestroy {
   loadForm() {
     this.formGroup = this.fb.group({
       title: [this.ingredient.title, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])],
+      calories: [this.ingredient.calories],
+      fat: [this.ingredient.fat],
+      carbohydrates: [this.ingredient.carbohydrates]
     });
+    this.formGroup.disable()
   }
 
   save() {
@@ -157,7 +161,13 @@ export class EditIngredientModalComponent implements OnInit, OnDestroy {
   selectSpoonResult = ({ item }: NgbTypeaheadSelectItemEvent) => {
     const selectedIngredient = this.ingredientsService.getSpoonItem(item.id).pipe(
       map(result => result)
-    ).subscribe((res: Ingredient) => console.log(res))
+    ).subscribe((res: Ingredient) => {
+      this.formGroup.patchValue(res)
+      this.ingredient = res
+      // console.log(this.ingredient)
+      // console.log(this.formGroup)
+    })
+    this.subscriptions.push(selectedIngredient);
   }
 
 }

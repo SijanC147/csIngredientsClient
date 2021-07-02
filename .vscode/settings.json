@@ -7,5 +7,42 @@
     "amplify/#current-cloud-backend": true,
     "amplify/backend/amplify-meta.json": true,
     "amplify/backend/awscloudformation": true
-  }
+  },
+  "serverlessConsole.services": [
+    {
+      "type": "dynamodb",
+      "title": "IngredientsDynamoDbTable",
+      "tableName": "IngredientsDynamoDbTable",
+      "awsProfile": "default",
+      "region": "us-east-1"
+    },
+    {
+      "type": "custom",
+      "title": "Lambda Logs",
+      "timeOffsetInMs": 0,
+      "awsProfile": "default",
+      "items": [
+        {
+          "title": "/aws/lambda/IngredientsDynamoCRUDLambdaFn",
+          "tabs": [
+            {
+              "region": "us-east-1",
+              "title": "dev",
+              "logs": "/aws/lambda/IngredientsDynamoCRUDLambdaFn"
+            }
+          ]
+        },
+        {
+          "title": "/aws/lambda/IngredientsSpoonProxyLambdaFn",
+          "tabs": [
+            {
+              "region": "us-east-1",
+              "title": "dev",
+              "logs": "/aws/lambda/IngredientsSpoonProxyLambdaFn"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
