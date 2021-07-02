@@ -1,7 +1,0 @@
-{
-    "/api/*": {
-        "target": "https://csapi.seshat.app",
-        "secure": false,
-        "logLevel": "debug"
-    }
-}
