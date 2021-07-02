@@ -1,6 +1,6 @@
 import { BaseModel } from '../../../_metronic/shared/crud-table';
 
-export interface Nutritient {
+export interface Nutrient {
   amount: number;
   unit: string;
 }
@@ -8,9 +8,9 @@ export interface Ingredient extends BaseModel {
   id: string;
   title: string;
   image: string;
-  calories: Nutritient;
-  fat: Nutritient;
-  carbohydrates: Nutritient;
+  calories: Nutrient;
+  fat: Nutrient;
+  carbohydrates: Nutrient;
   // keto?: number;
 }
 

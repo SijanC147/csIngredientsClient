@@ -13,6 +13,7 @@ import { FetchIngredientsModalComponent } from './ingredients/components/fetch-i
 import { UpdateIngredientsStatusModalComponent } from './ingredients/components/update-ingredients-status-modal/update-ingredients-status-modal.component';
 import { EditIngredientModalComponent } from './ingredients/components/edit-ingredient-modal/edit-ingredient-modal.component';
 import { NgbDatepickerModule, NgbModalModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from 'src/app/_metronic/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NgbDatepickerModule, NgbModalModule, NgbTypeaheadModule } from '@ng-boo
     CRUDTableModule,
     NgbModalModule,
     NgbDatepickerModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+    CoreModule
   ],
   entryComponents: [
     DeleteIngredientModalComponent,
