@@ -1,17 +1,31 @@
-const targetPath = './src/environments/environment.prod.ts';
 const fs = require('fs')
-const envConfigFile = `export const environment = {
+const devEnv = process.argv[process.argv.length - 1] === "dev"
+const targetFileName = `environment.${devEnv ? "" : "prod"}ts`
+const targetPath = `./src/environments/${targetFileName}`;
+const envConfigFile = `
+export const environment = {
     apiUrl: '${process.env.API_ENDPOINT}',
-    production: true,
+    authDomain: '${process.env.AUTH_DOMAIN}',
+    identityPoolId: '${process.env.IDENTITY_POOL_ID}',
+    region: '${process.env.REGION}',
+    identityPoolRegion: '${process.env.REGION}',
+    userPoolId: '${process.env.USER_POOL_ID}',
+    userPoolWebClientId: '${process.env.USER_POOL_CLIENT_ID}',
+    ${(devEnv ?
+        `production: false,
     appVersion: 'v717demo1',
     USERDATA_KEY: 'authf649fc9a5f55',
-    isMockEnabled: false,
-};
-`;
+    isMockEnabled: true`
+        :
+        `production: true,
+    appVersion: 'v717demo1',
+    USERDATA_KEY: 'authf649fc9a5f55',
+    isMockEnabled: false`)}
+};`;
 fs.writeFile(targetPath, envConfigFile, function (err) {
     if (err) {
         throw console.error(err);
     } else {
-        console.log(`Angular environment.prod.ts file generated correctly at ${targetPath} \n`);
+        console.log(`Environment file generated correctly at ${targetPath} \n ${envConfigFile}`);
     }
 });

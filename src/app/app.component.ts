@@ -16,6 +16,7 @@ import { SplashScreenService } from './_metronic/partials/layout/splash-screen/s
 import { Router, NavigationEnd, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TableExtendedService } from './_metronic/shared/crud-table';
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'body[root]',

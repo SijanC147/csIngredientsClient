@@ -95,7 +95,7 @@ export abstract class TableService<T> {
     );
   }
 
-  getItemById(id: number): Observable<BaseModel> {
+  getItemById(id: string): Observable<BaseModel> {
     this._isLoading$.next(true);
     this._errorMessage.next('');
     const url = `${this.API_URL}/${id}`;
@@ -125,7 +125,7 @@ export abstract class TableService<T> {
   }
 
   // UPDATE Status
-  updateStatusForItems(ids: number[], status: number): Observable<any> {
+  updateStatusForItems(ids: string[], status: number): Observable<any> {
     this._isLoading$.next(true);
     this._errorMessage.next('');
     const body = { ids, status };

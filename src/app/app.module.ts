@@ -18,6 +18,10 @@ import { SplashScreenModule } from './_metronic/partials/layout/splash-screen/sp
 import { FakeAPIService } from './_fake/fake-api.service';
 // #fake-end#
 
+// import { Amplify } from '@aws-amplify/core'
+// import awsconfig from './aws-exports'
+// Amplify.configure(awsconfig);
+
 function appInitializer(authService: AuthService) {
   return () => {
     return new Promise((resolve) => {

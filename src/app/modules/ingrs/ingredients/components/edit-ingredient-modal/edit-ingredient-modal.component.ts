@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbDateAdapter, NgbDateParserFormatter, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { of, Subscription, Observable } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, finalize, first, switchMap, tap } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, finalize, first, switchMap, tap, map } from 'rxjs/operators';
 import { Ingredient } from '../../../_models/ingredient.model';
 import { IngredientsService } from '../../../_services';
 import { CustomAdapter, CustomDateParserFormatter, getDateFromString } from '../../../../../_metronic/core';
@@ -29,9 +29,10 @@ const EMPTY_INGREDIENT: Ingredient = {
   ]
 })
 export class EditIngredientModalComponent implements OnInit, OnDestroy {
-  @Input() id: number;
+  @Input() id: string;
   isLoading$;
   ingredient: Ingredient;
+  selectedIngredient: any;
   formGroup: FormGroup;
   searching = false;
   searchFailed = false;
@@ -147,6 +148,10 @@ export class EditIngredientModalComponent implements OnInit, OnDestroy {
       switchMap(term =>
         this.ingredientsService.search(term).pipe(
           tap(() => this.searchFailed = false),
+          map((ingredients) => {
+            console.log(ingredients)
+            return ingredients.map(({ name }) => name)
+          }),
           catchError(() => {
             this.searchFailed = true;
             return of([]);

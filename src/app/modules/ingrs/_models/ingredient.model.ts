@@ -1,18 +1,23 @@
 import { BaseModel } from '../../../_metronic/shared/crud-table';
 
+export interface Nutritient {
+  amount: number;
+  unit: string;
+}
 export interface Ingredient extends BaseModel {
-  id: number;
+  id: string;
   title: string;
   image: string;
-  calories: number;
-  fat: number;
-  carbohydrates: number;
-  keto: number; // no = 0 | yes = 1
-  // userName: string;
-  // gender: string;
-  // status: number; // Active = 1 | Suspended = 2 | Pending = 3
-  // dateOfBbirth: string;
-  // dob: Date;
-  // ipAddress: string;
-  // type: number; // 1 = Business | 2 = Individual
+  calories: Nutritient;
+  fat: Nutritient;
+  carbohydrates: Nutritient;
+  keto?: number;
 }
+
+export interface SpoonSearchResult extends BaseModel {
+  id: number;
+  name: string;
+  image: string;
+}
+
+

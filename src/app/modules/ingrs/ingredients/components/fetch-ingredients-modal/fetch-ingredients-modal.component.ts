@@ -11,7 +11,7 @@ import { IngredientsService } from '../../../_services';
   styleUrls: ['./fetch-ingredients-modal.component.scss']
 })
 export class FetchIngredientsModalComponent implements OnInit, OnDestroy {
-  @Input() ids: number[];
+  @Input() ids: string[];
   ingredients: Ingredient[] = [];
   isLoading = false;
   subscriptions: Subscription[] = [];

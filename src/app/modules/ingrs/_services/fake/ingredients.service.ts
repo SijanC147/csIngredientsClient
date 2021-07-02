@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { exhaustMap, map } from 'rxjs/operators';
 import { TableService, TableResponseModel, ITableState, BaseModel, PaginatorState, SortState, GroupingState } from '../../../../_metronic/shared/crud-table';
-import { Ingredient } from '../../_models/ingredient.model';
+import { Ingredient, SpoonSearchResult } from '../../_models/ingredient.model';
 import { baseFilter } from '../../../../_fake/fake-helpers/http-extenstions';
 import { environment } from '../../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -26,13 +26,14 @@ export class IngredientsService extends TableService<Ingredient> implements OnDe
     super(http);
   }
 
-  search(term: string): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.API_URL).pipe(
-      map((response: Ingredient[]) => {
-        const result = response;
-        return result;
-      })
-    )
+  search(term: string): Observable<SpoonSearchResult[]> {
+    const searchApiUrl = `${this.API_URL}/spoon?q=${encodeURI(term)}`
+    console.log(term)
+    // const searchApiUrl = `https://csapi.seshat.app/ingredients/spoon?q=${encodeURI(term)}`
+    return this.http.get<SpoonSearchResult[]>(searchApiUrl).pipe(
+      map((results: SpoonSearchResult[]) => {
+        return results
+      }))
   }
 
   // READ
@@ -57,23 +58,23 @@ export class IngredientsService extends TableService<Ingredient> implements OnDe
     return forkJoin(tasks$);
   }
 
-  updateStatusForItems(ids: number[], keto: number): Observable<any> {
-    return this.http.get<Ingredient[]>(this.API_URL).pipe(
-      map((Ingredients: Ingredient[]) => {
-        return Ingredients.filter(c => ids.indexOf(c.id) > -1).map(c => {
-          c.keto = keto;
-          return c;
-        });
-      }),
-      exhaustMap((Ingredients: Ingredient[]) => {
-        const tasks$ = [];
-        Ingredients.forEach(Ingredient => {
-          tasks$.push(this.update(Ingredient));
-        });
-        return forkJoin(tasks$);
-      })
-    );
-  }
+  // updateStatusForItems(ids: number[], keto: number): Observable<any> {
+  //   return this.http.get<Ingredient[]>(this.API_URL).pipe(
+  //     map((Ingredients: Ingredient[]) => {
+  //       return Ingredients.filter(c => ids.indexOf(c.id) > -1).map(c => {
+  //         c.keto = keto;
+  //         return c;
+  //       });
+  //     }),
+  //     exhaustMap((Ingredients: Ingredient[]) => {
+  //       const tasks$ = [];
+  //       Ingredients.forEach(Ingredient => {
+  //         tasks$.push(this.update(Ingredient));
+  //       });
+  //       return forkJoin(tasks$);
+  //     })
+  //   );
+  // }
 
   ngOnDestroy() {
     this.subscriptions.forEach(sb => sb.unsubscribe());

@@ -1,11 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
+import { Observable, BehaviorSubject, of, Subscription, from } from 'rxjs';
 import { map, catchError, switchMap, finalize } from 'rxjs/operators';
 import { UserModel } from '../_models/user.model';
 import { AuthModel } from '../_models/auth.model';
 import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+// import { AmplifyService } from 'aws-amplify-angular'
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +58,18 @@ export class AuthService implements OnDestroy {
       }),
       finalize(() => this.isLoadingSubject.next(false))
     );
+    // return this.authHttpService.login(email, password).pipe(
+    //   map((auth: AuthModel) => {
+    //     const result = this.setAuthFromLocalStorage(auth);
+    //     return result;
+    //   }),
+    //   switchMap(() => this.getUserByToken()),
+    //   catchError((err) => {
+    //     console.error('err', err);
+    //     return of(undefined);
+    //   }),
+    //   finalize(() => this.isLoadingSubject.next(false))
+    // );
   }
 
   logout() {

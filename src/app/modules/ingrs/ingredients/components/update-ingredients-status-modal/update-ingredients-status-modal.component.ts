@@ -11,7 +11,7 @@ import { IngredientsService } from '../../../_services';
   styleUrls: ['./update-ingredients-status-modal.component.scss']
 })
 export class UpdateIngredientsStatusModalComponent implements OnInit, OnDestroy {
-  @Input() ids: number[];
+  @Input() ids: string[];
   status = 2;
   ingredients: Ingredient[] = [];
   isLoading = false;
